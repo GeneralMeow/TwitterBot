@@ -1,0 +1,23 @@
+{
+  "name": "TwitterBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeneralMeow/TwitterBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GeneralMeow/TwitterBot/issues"
+  },
+  "homepage": "https://github.com/GeneralMeow/TwitterBot#readme",
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
+}
