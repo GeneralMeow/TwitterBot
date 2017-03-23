@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS twitterBot;
+CREATE DATABASE twitterBot;
+
+\c twitterBot;
+
+DROP TABLE IF EXISTS tweets;
+CREATE TABLE tweets(
+  tweetId SERIAL PRIMARY KEY,
+  tweet VARCHAR(1720)
+)
