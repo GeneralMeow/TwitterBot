@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS twitterBot;
+DROP DATABASE IF EXISTS twitterbot;
 CREATE DATABASE twitterBot;
 
-\c twitterBot;
+\c twitterbot;
 
 DROP TABLE IF EXISTS tweets;
 CREATE TABLE tweets(
