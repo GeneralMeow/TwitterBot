@@ -5,27 +5,23 @@ const database = require('../database/database.js')
 const express = require('express')
 const router = express.Router()
 
-
-function getTweets(err, data, response) {
-  var tweets = data.statuses
-  for(var i = 0; i < tweets.length; i++) {
-    database.addTweet(tweets[i].text)
-  }
-}
-
 function getAll() {
-  database.getAllTweets().then(data => {
-    for(var i = 0; i < data.length; i++) {
-      allTweets.push(data[i].tweetext)
-    }
-    database.deleteDuplicates()
-  })
+	database.getAllTweets().then(data => {
+		for(var i = 0; i < data.length; i++) {
+			allTweets.push(data[i].tweetext)
+		}
+		database.deleteDuplicates()
+	})
 }
 
+function getOne() {
+	getAll()
+	const arrayLength = allTweets.length
+	const index = Math.floor((Math.random() * arrayLength) + 1);
+	return allTweets[index]
+}
 
-
-
-//use twitter api to grab last 10 tweets from user
+//GET OLD TWEETS IN BATCHES FROM TWITTER
 const params = {
 	screen_name:'_GeneralMeow_',
 	q: '_GeneralMeow_',
@@ -34,12 +30,12 @@ const params = {
 
 Twitter.get('search/tweets', params, getTweets)
 
-
-function getOne() {
-	getAll()
-	const arrayLength = allTweets.length
-	const index = Math.floor((Math.random() * arrayLength) + 1);
-	return allTweets[index]
+function getTweets(err, data, response) {
+	var tweets = data.statuses
+	for(var i = 0; i < tweets.length; i++) {
+		// let test = tweets[i].text
+		database.addTweet(tweets[i].text)
+	}
 }
 
 //	TWEET OUT ONE RANDOM TWEET FROM DB
@@ -68,7 +64,6 @@ function tweetOut() {
 				console.log('It worked!')
 			}
 		}
-
 	})
 }
 
@@ -77,7 +72,7 @@ const stream = Twitter.stream('user')
 stream.on('tweet', addToDb)
 
 function addToDb(event) {
-	if(event.user.screen_name === 'WebDevBotFun') {
+	if(event.user.screen_name === '_GeneralMeow_') {
 		const message = event.text
 		database.addTweet(message)
 		console.log('tweet added to database: ', message)
@@ -85,10 +80,14 @@ function addToDb(event) {
 	database.deleteDuplicates()
 }
 
-
-    router.get('/', function(req, res, next) {
-      res.render('index', { title: 'WHutup' });
+router.get('/', function(request, response, next) {
+  database.getAllTweets()
+  .then( data => {
+    response.render('index', {
+      title: 'WHutup',
+      data: data
     });
-
+  })
+});
 
 module.exports = router;
