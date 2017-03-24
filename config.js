@@ -7,8 +7,8 @@ TWITTER APP CONFIGURATION
 */
 
 module.exports = {
-  consumer_key: 'n9vUPDgXlOCUnRhNeX632DvMN',
-  consumer_secret: 'NwK7ije8mKE13RxTJoVtdXgGHSyO8GcW3Lj9eVOd9o9IgUK81I',
-  access_token: '841705401095606272-JLny9Gn1KXrfRESCv101EshjC1UR6gs',
-  access_token_secret: '5ifsaBYFDtxaXshX8ofIAel0mLgxs9XcCeOP7a0NOv9zV'
+  consumer_key: 'QCbpJ3juWB0LvF9lXDjZ8CCHd',
+  consumer_secret: 'Y2lRxsojFK7fnNZ2lnwfny1YAKfoUKqIh6KKbgSYQz16U49dVG',
+  access_token: '841705401095606272-N4Pha16uvWEMIaeY7lBrAI7C2e7Ut7u',
+  access_token_secret: 'SrxtgEJEWtPdx8kqEljgDcSB2EYWABZ4X8mzQhVCjTa1y'
 }
