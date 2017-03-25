@@ -33,13 +33,12 @@ Twitter.get('search/tweets', params, getTweets)
 function getTweets(err, data, response) {
 	var tweets = data.statuses
 	for(var i = 0; i < tweets.length; i++) {
-		// let test = tweets[i].text
 		database.addTweet(tweets[i].text)
 	}
 }
 
 //	TWEET OUT ONE RANDOM TWEET FROM DB
-setInterval (tweetOut, 1000*60)
+setInterval (tweetOut, 9000*600)
 
 function tweetOut() {
 	const allTweets = [];
@@ -85,7 +84,7 @@ router.get('/', function(request, response, next) {
   .then( data => {
     response.render('index', {
       title: 'WHutup',
-      data: data
+      tweets: data
     });
   })
 });
